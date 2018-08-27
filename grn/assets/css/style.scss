@@ -1,0 +1,54 @@
+$primary-color: rgba(0, 0, 128, 255);
+$secondary-color: rgba(255, 102, 0, 255);
+$dark-color: rgba(55, 55, 55, 255);
+$transition-time: 0.1s;
+
+$tv-gaspar-color: rgb(173, 39, 36);
+$pw-color: rgb(24, 74, 199);
+$neves-films-color: rgb(55, 55, 55);
+
+.primary {
+  color: $primary-color;
+  border-color: $primary-color;
+}
+
+.button {
+  text-transform: uppercase;
+  padding: 4px 20px;
+  font-size: 12px;
+  border-radius: 8px;
+  background: none;
+  outline: none;
+  border: 2px solid;
+}
+
+.button:hover {
+  color: white;
+  background: $primary-color;
+  transition: $transition-time;
+  border: 2px solid $primary-color;
+}
+
+.social.button {
+  text-transform: none;
+  width: 1.7em;
+  height: 1.7em;
+  padding: 3px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 40px;
+  text-transform: uppercase;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  + p {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}
