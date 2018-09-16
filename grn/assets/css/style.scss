@@ -7,6 +7,10 @@ $tv-gaspar-color: rgb(173, 39, 36);
 $pw-color: rgb(24, 74, 199);
 $neves-films-color: rgb(55, 55, 55);
 
+h3, p{
+  line-height: 1.3em;
+}
+
 .primary {
   color: $primary-color;
   border-color: $primary-color;
@@ -29,6 +33,18 @@ $neves-films-color: rgb(55, 55, 55);
   border: 2px solid $primary-color;
 }
 
+.light {
+  color: white;
+  border-color: white;
+}
+
+.button.light:hover {
+  color: white;
+  background: #fff5;
+  transition: $transition-time;
+  border: 2px solid white;
+}
+
 .social.button {
   text-transform: none;
   width: 1.7em;
@@ -42,13 +58,15 @@ $neves-films-color: rgb(55, 55, 55);
 .section-title {
   text-align: center;
   font-size: 40px;
+  font-weight: lighter;
   text-transform: uppercase;
-  padding-top: 50px;
-  padding-bottom: 10px;
+  padding-top: 100px;
+  padding-bottom: 20px;
   + p {
     width: 70%;
     margin: 0 auto;
+    font-size: 18px;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 }

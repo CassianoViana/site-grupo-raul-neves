@@ -1,36 +1,81 @@
 <template>
   <div>
     <div class="outer-top-line">
-      <div class="top-line container mx-auto">
+      <div id="topLine"
+           class="top-line container mx-auto">
         <span>Bem-vindo, {{dateNow}}</span>
-        <span>Tel: (47) 3318-0431</span>
+        <span>
+          Tel: (47) 3318-0431
+        </span>
       </div>
     </div>
-    <div class="outer-nav container mx-auto">
-      <div class="flex-row social-buttons">
-        <button class="primary social button mr-1"> f</button>
-        <button class="primary social button mr-1"> i</button>
-        <button class="primary social button"> t</button>
+    <div class="fixable-bar"
+         :class="{'fixed':fixedBar}">
+      <div class="outer-nav container mx-auto">
+        <div class="flex-row social-buttons"
+             v-show="menuOpen">
+          <button class="primary social button mr-1"
+                  :class="{'light':fixedBar}"> f
+          </button>
+          <button class="primary social button mr-1"
+                  :class="{'light':fixedBar}"> i
+          </button>
+          <button class="primary social button"
+                  :class="{'light':fixedBar}"> t
+          </button>
+        </div>
+        <nav class="bar">
+          <ul>
+            <li v-show="menuOpen">
+              <a href="#group" @click.prevent="scroolTo('group')">
+                Grupo
+              </a>
+            </li>
+            <li v-show="menuOpen">
+              <a href="#services" @click.prevent="scroolTo('services')">
+                Serviços
+              </a>
+            </li>
+            <li class="logo">
+              <img :src="`/logo-grupo-raul-neves${fixedBar?'-light':''}.svg`"/>
+              <button
+                @click="menuOpen = !menuOpen"
+                id="burger-button">
+                <img v-if="fixedBar" :src="menuOpen?'/menu-list-close.svg':'/menu-list.svg'"/>
+                <img v-else :src="menuOpen?'/menu-list-close-dark.svg':'/menu-list-dark.svg'"/>
+              </button>
+            </li>
+            <li v-show="menuOpen">
+              <a href="#team"
+                 @click.prevent="scroolTo('team')">
+                Time
+              </a>
+            </li>
+            <li v-show="menuOpen">
+              <a href="#contact">
+                Contato
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <button
+          v-show="menuOpen"
+          class="primary button call-button" :class="{'light':fixedBar}">
+          Ligar
+        </button>
       </div>
-      <nav class="bar">
-        <ul>
-          <li><a href="#group">Grupo</a></li>
-          <li><a href="#services">Serviços</a></li>
-          <li class="logo">
-            <img src="/logo-grupo-raul-neves.svg"/>
-          </li>
-          <li><a href="#team">Time</a></li>
-          <li><a href="#contact">Contato</a></li>
-        </ul>
-      </nav>
-      <button class="primary button call-button">
-        Ligar
-      </button>
     </div>
   </div>
 </template>
 <script>
   export default {
+    data() {
+      return {
+        fixedBar: false,
+        menuOpen: true,
+        scrollListener: undefined
+      }
+    },
     computed: {
       dateNow() {
         const monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -38,7 +83,7 @@
         ];
         let today = new Date();
         let dd = today.getDate();
-        let mm = today.getMonth() + 1; //January is 0!
+        let mm = today.getMonth(); //January is 0!
 
         let hh = today.getHours();
         let min = today.getMinutes();
@@ -50,7 +95,23 @@
         let monthName = monthNames[mm];
         return `${dd} de ${monthName} de ${yyyy} ${hh}:${min}`;
       }
-    }
+    },
+    methods: {
+      scroolTo(id) {
+        const elmt = document.getElementById(id)
+        elmt.scrollIntoView({behavior: 'smooth', block: 'start'});
+      },
+      controlTopBarFixation(evt) {
+        this.fixedBar = window.scrollY > 0;
+        this.menuOpen = window.innerWidth > 768;
+      }
+    },
+    mounted() {
+      this.scrollListener = window.addEventListener('scroll', this.controlTopBarFixation)
+    },
+    destroyed() {
+      window.removeEventListener('scroll', this.scrollListener);
+    },
   }
 </script>
 <style lang="scss">
@@ -99,6 +160,13 @@
 
       li.logo {
         margin: auto 30px;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: center;
+        #burger-button {
+          display: none;
+        }
         img {
           width: 200px;
         }
@@ -110,14 +178,60 @@
     }
   }
 
-  @media(max-width: 768px) {
+  .fixable-bar {
+    transition: all $transition-time;
+    nav.bar {
+      transition: padding $transition-time;
+      ul {
+        li {
+          a {
+            transition: padding $transition-time;
+          }
+        }
+      }
+    }
+  }
 
+  .fixable-bar.fixed {
+    z-index: 3;
+    width: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.8);
+    top: 0;
+    nav.bar {
+      padding: 10px;
+      ul {
+        li {
+          a {
+            color: white;
+          }
+        }
+      }
+      li:not(.logo):hover {
+        border-top: 2px solid white;
+      }
+    }
+    button {
+      color: white;
+    }
+  }
+
+  @media(max-width: 768px) {
+    .call-button {
+      margin-bottom: 20px;
+    }
     div.top-line {
-      display: none;
+      display: flex;
+      flex-flow: column nowrap;
+      text-align: center;
+      padding: 5px 10px;
+      font-size: 15px;
+      span {
+        margin: 5px auto;
+      }
     }
 
     div.outer-nav {
-      padding: 30px;
       display: flex;
       flex-flow: column nowrap;
       justify-content: space-around;
@@ -135,16 +249,22 @@
         li {
           text-align: center;
           width: 100%;
-          font-size: 15px;
-          margin: 0;
-          padding: 5px;
+          margin: 3px auto;
+          a {
+            font-size: 28px;
+          }
         }
 
         li.logo {
           margin: 0;
           order: 1;
+          display: flex;
+          justify-content: space-between;
           img {
-            width: 100%;
+            width: 50%;
+          }
+          #burger-button {
+            display: inline-block;
           }
         }
 
@@ -166,5 +286,20 @@
       order: 3;
     }
 
+    @media(orientation: landscape) {
+      .outer-nav {
+        padding: 0 !important;
+      }
+      nav.bar {
+        padding: 10px;
+        ul {
+          li.logo {
+            img {
+              width: 25%;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

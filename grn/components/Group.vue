@@ -1,5 +1,7 @@
 <template>
-  <div id="group" class="root" :style="`background-color:${backgroundColor}`">
+  <section id="group"
+           class="root"
+           :style="`background-color:${backgroundColor}`">
     <div class="title">
       <h2 class="section-title">O Grupo</h2>
       <p>Para cada necessidade, uma empresa especializada</p>
@@ -16,20 +18,26 @@
                       large/>
         </div>
         <div class="row">
-          <brand-ball brand-image="/logo-tv-gaspar.svg"
-                      color="rgb(173, 39, 36)"
-                      @hover="changeBackgroundColor"/>
-          <brand-ball brand-image="/logo-neves-films.svg"
-                      color="rgb(55, 55, 55)"
-                      @hover="changeBackgroundColor"
-                      logo-width="65%"/>
-          <brand-ball brand-image="/logo-pw.svg"
-                      color="rgb(24, 74, 199)"
-                      @hover="changeBackgroundColor"/>
+          <a href="http://tvgaspar.com.br" target="_blank">
+            <brand-ball brand-image="/logo-tv-gaspar.svg"
+                        color="rgb(173, 39, 36)"
+                        @hover="changeBackgroundColor"/>
+          </a>
+          <a href="https://nevesfilms.com.br" target="_blank">
+            <brand-ball brand-image="/logo-neves-films.svg"
+                        color="rgb(55, 55, 55)"
+                        @hover="changeBackgroundColor"
+                        logo-width="65%"/>
+          </a>
+          <a href="https://playerweb.com.br" target="_blank">
+            <brand-ball brand-image="/logo-pw.svg"
+                        color="rgb(24, 74, 199)"
+                        @hover="changeBackgroundColor"/>
+          </a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
   import BrandBall from '~/components/BrandBall';
@@ -69,6 +77,9 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
+    a {
+      z-index: 2;
+    }
   }
 
   .title {
@@ -76,7 +87,7 @@
   }
 
   #link-lines {
-    z-index: 1;
+    z-index: 0;
     width: 50%;
     left: 25%;
     position: absolute;

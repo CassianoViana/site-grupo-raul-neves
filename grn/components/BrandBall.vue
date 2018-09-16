@@ -24,7 +24,6 @@
         default: false
       },
       color: {
-        required: true,
         type: String
       }
     }
@@ -33,7 +32,7 @@
 <style lang="scss">
   @import "~/assets/css/style.scss";
 
-  $ball-size: 250px;
+  $ball-size: 220px;
 
   div.brand-ball {
     cursor: pointer;
@@ -57,7 +56,7 @@
   }
 
   div.brand-ball.large {
-    $large-factor: 1.3;
+    $large-factor: 1.6;
     min-width: $ball-size * $large-factor;
     min-height: $ball-size * $large-factor;
     width: $ball-size * $large-factor;
@@ -91,7 +90,7 @@
 
 
   @media(max-width: 500px) {
-    $ball-size: 80px;
+    $ball-size: 100px;
 
     div.brand-ball {
       min-width: $ball-size;
