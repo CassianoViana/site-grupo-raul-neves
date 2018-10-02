@@ -61,9 +61,9 @@
 
   div.banner {
     position: relative;
-    height: 500px;
     background-position: center;
-    transition: background-size 5s ease-in-out, background-image 1s;
+    background-size: auto 100% ;
+    transition: background-image 1s;
 
     .gradient {
       position: absolute;
@@ -81,16 +81,15 @@
     }
 
     div.banner:not(.odd) {
-      background-size: 110%;
+      background-size: 100%;
     }
   }
 
-  @media(max-width: 1500px) { div.banner { height: 300px; } }
-  @media(max-width: 1200px) { div.banner { height: 200px; } }
+  @media(max-width: 1500px) { div.banner { height: 450px; } }
+  @media(max-width: 1200px) { div.banner { height: 300px; } }
 
   @media(max-width: 936px) {
     div.banner {
-      background-size: cover;
       height: 200px;
     }
   }

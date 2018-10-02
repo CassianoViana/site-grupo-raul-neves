@@ -11,6 +11,10 @@ h3, p{
   line-height: 1.3em;
 }
 
+a {
+  text-decoration: none;
+}
+
 .primary {
   color: $primary-color;
   border-color: $primary-color;

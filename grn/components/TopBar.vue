@@ -14,26 +14,21 @@
       <div class="outer-nav container mx-auto">
         <div class="flex-row social-buttons"
              v-show="menuOpen">
-          <button class="primary social button mr-1"
-                  :class="{'light':fixedBar}"> f
-          </button>
-          <button class="primary social button mr-1"
-                  :class="{'light':fixedBar}"> i
-          </button>
-          <button class="primary social button"
-                  :class="{'light':fixedBar}"> t
-          </button>
+          <a target="_blank"
+             href="https://www.facebook.com/tvgasparoficial/" class="primary social button mr-1"
+             :class="{'light':fixedBar}">f</a>
+          <a target="_blank"
+             href="https://vimeo.com/nevesfilms" class="primary social button mr-1"
+             :class="{'light':fixedBar}">v</a>
+          <a target="_blank"
+             href="https://twitter.com/tvgaspar" class="primary social button"
+             :class="{'light':fixedBar}">t</a>
         </div>
         <nav class="bar">
           <ul>
             <li v-show="menuOpen">
               <a href="#group" @click.prevent="scroolTo('group')">
                 Grupo
-              </a>
-            </li>
-            <li v-show="menuOpen">
-              <a href="#services" @click.prevent="scroolTo('services')">
-                Serviços
               </a>
             </li>
             <li class="logo">
@@ -46,6 +41,11 @@
               </button>
             </li>
             <li v-show="menuOpen">
+              <a href="#services" @click.prevent="scroolTo('services')">
+                Serviços
+              </a>
+            </li>
+            <!--<li v-show="menuOpen">
               <a href="#team"
                  @click.prevent="scroolTo('team')">
                 Time
@@ -55,14 +55,14 @@
               <a href="#contact">
                 Contato
               </a>
-            </li>
+            </li>-->
           </ul>
         </nav>
-        <button
-          v-show="menuOpen"
-          class="primary button call-button" :class="{'light':fixedBar}">
+        <a href="https://api.whatsapp.com/send?phone=5547997436800"
+           v-show="menuOpen"
+           class="primary button call-button" :class="{'light':fixedBar}">
           Ligar
-        </button>
+        </a>
       </div>
     </div>
   </div>
@@ -117,6 +117,13 @@
 <style lang="scss">
   @import "~/assets/css/style.scss";
 
+  .social-buttons {
+    a {
+      padding: 5px 8px !important;
+      text-align: center !important;
+    }
+  }
+
   div.outer-top-line {
     background: $dark-color;
   }
@@ -153,7 +160,7 @@
           text-decoration: none;
         }
         box-sizing: border-box;
-        font-size: 15px;
+        font-size: 19px;
         margin: auto 10px;
         padding: 5px;
       }

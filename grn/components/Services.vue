@@ -18,11 +18,11 @@
           capaz de prender a atenção dos espectadores por ser mais
           dinâmico que os outros tipos de painel.
         </p>
-        <div class="btn">
+        <!--<div class="btn">
           <nuxt-link class="button" to="/painel-de-led">
             Clique para saber mais
           </nuxt-link>
-        </div>
+        </div>-->
       </li>
       <li>
         <div class="img-wrapper">
@@ -34,11 +34,11 @@
           televisores espalhados pelos estabelecimentos comerciais da cidade.
           Dessa forma você estará presente desde à padaria até o posto de gasolina.
         </p>
-        <div class="btn">
+        <!--<div class="btn">
           <nuxt-link class="button" to="/tv-indoor">
             Clique para saber mais
           </nuxt-link>
-        </div>
+        </div>-->
       </li>
       <li>
         <div class="img-wrapper">
@@ -50,11 +50,11 @@
           insersões na <i>tv indoor</i> você fica sabendo de tudo que acontece, de forma rápida,
           clara e visual.
         </p>
-        <div class="btn">
+        <!--<div class="btn">
           <button class="button">
             Clique para saber mais
           </button>
-        </div>
+        </div>-->
       </li>
     </ul>
     <ul class="services row">

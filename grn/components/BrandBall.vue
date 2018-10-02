@@ -32,7 +32,7 @@
 <style lang="scss">
   @import "~/assets/css/style.scss";
 
-  $ball-size: 220px;
+  $ball-size: 200px;
 
   div.brand-ball {
     cursor: pointer;
