@@ -15,14 +15,20 @@
         <div class="flex-row social-buttons"
              v-show="menuOpen">
           <a target="_blank"
-             href="https://www.facebook.com/tvgasparoficial/" class="primary social button mr-1"
-             :class="{'light':fixedBar}">f</a>
+             href="https://www.facebook.com/tvgasparoficial/" class="primary social mr-1"
+             :class="{'light':fixedBar}">
+            <img :src="`icon-facebook${fixedBar?'':'-blue'}.svg`"/>
+          </a>
           <a target="_blank"
-             href="https://vimeo.com/nevesfilms" class="primary social button mr-1"
-             :class="{'light':fixedBar}">v</a>
+             href="https://vimeo.com/nevesfilms" class="primary social mr-1"
+             :class="{'light':fixedBar}">
+            <img :src="`icon-vimeo${fixedBar?'':'-blue'}.svg`"/>
+          </a>
           <a target="_blank"
-             href="https://twitter.com/tvgaspar" class="primary social button"
-             :class="{'light':fixedBar}">t</a>
+             href="https://twitter.com/tvgaspar" class="primary social"
+             :class="{'light':fixedBar}">
+            <img :src="`icon-twitter${fixedBar?'':'-blue'}.svg`"/>
+          </a>
         </div>
         <nav class="bar">
           <ul>
@@ -61,7 +67,7 @@
         <a href="https://api.whatsapp.com/send?phone=5547997436800"
            v-show="menuOpen"
            class="primary button call-button" :class="{'light':fixedBar}">
-          Ligar
+          <i><b>Ligar</b></i>
         </a>
       </div>
     </div>

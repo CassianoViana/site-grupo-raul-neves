@@ -63,7 +63,7 @@
     position: relative;
     background-position: center;
     background-size: auto 100% ;
-    transition: background-image 1s;
+    transition: background-image 2s;
 
     .gradient {
       position: absolute;
